@@ -1,0 +1,31 @@
+{
+  "name": "pragma-brewery-api",
+  "version": "1.0.0",
+  "description": "An api to manage transport of beers",
+  "main": "server.js",
+  "scripts": {
+    "test": "mocha ../specs --recursive",
+    "dev": "nodemon -r esm server.js",
+    "run": "node -r esm server.js"
+  },
+  "keywords": [
+    "beer",
+    "api"
+  ],
+  "author": "Pablo Féijo",
+  "license": "ISC",
+  "dependencies": {
+    "awilix": "^4.2.2",
+    "awilix-express": "^2.1.1",
+    "body-parser": "^1.19.0",
+    "esm": "^3.2.25",
+    "express": "^4.17.0",
+    "morgan": "^1.9.1",
+    "mqtt": "^2.18.8"
+  },
+  "devDependencies": {
+    "chai": "^4.2.0",
+    "mocha": "^6.1.4",
+    "nodemon": "^1.19.0"
+  }
+}
