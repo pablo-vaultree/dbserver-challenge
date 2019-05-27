@@ -8,35 +8,39 @@ import { loadControllers, scopePerRequest } from 'awilix-express'
 
 let app = express()
 
-createContainerDI(app);
+createContainerDI(app)
 
 app.use(morgan('dev'))
 app.use(bodyParser.json())
-app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.urlencoded({ extended: true }))
 
-var port = config.APP_PORT || 4000;
-app.listen(port);
+var port = config.APP_PORT || 4000
+const server = app.listen(port, () => {
+    console.log('server up and running at: ' + port)
+})
+
+export default server
 
 function createContainerDI(app) {
-  
-  const container = createContainer()
-    .register({
-      config: asValue(config),
-      containerModel: asValue(containerModel)
-    });
 
-  const opts = {
-    formatName: 'camelCase',
-    cwd: __dirname
-  }
-  container.loadModules(
-    [
-      'services/*.js',
-      'factories/*.js',
-    ],
-    opts
-  )
+    const container = createContainer()
+        .register({
+            config: asValue(config),
+            containerModel: asValue(containerModel)
+        })
 
-  app.use(scopePerRequest(container))
-  app.use(loadControllers('controllers/*.js', { cwd: __dirname }))
+    const opts = {
+        formatName: 'camelCase',
+        cwd: __dirname
+    }
+    container.loadModules(
+        [
+            'services/*.js',
+            'factories/*.js',
+        ],
+        opts
+    )
+
+    app.use(scopePerRequest(container))
+    app.use(loadControllers('controllers/*.js', { cwd: __dirname }))
 }

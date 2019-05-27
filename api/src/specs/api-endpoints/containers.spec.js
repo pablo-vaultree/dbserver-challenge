@@ -1,25 +1,34 @@
+import request from 'supertest'
 import { expect } from 'chai'
+import app from '../../server'
 
-import x from '../../controllers/containers'
-
-const { hello } = require('../../routes/greeting');
-
-let req = {
-    body: {},
-};
-
-let res = {
-    sendCalledWith: '',
-    send: function (arg) {
-        this.sendCalledWith = arg;
-    }
-};
-
-describe('Greetings Route', function () {
-    describe('Hello() function', function () {
-        it('Should error out if no name provided ', function () {
-            hello(req, res);
-            expect(res.sendCalledWith).to.contain('error');
-        });
+describe('GET /deliveries/1/containers', () => {
+    it('respond with json containing a list of all containers', (done) => {
+        request(app)
+            .get('/deliveries/1/containers')
+            .set('Accept', 'application/json')
+            .expect('Content-Type', /json/)
+            .expect(200, done)
+        // .end((err, res) => {
+        //     if (err)
+        //         return done(err)
+        //     done()
+        // })
     })
-});
+
+    it('respond with json containing a container', (done) => {
+        request(app)
+            .get('/deliveries/1/containers/1')
+            .set('Accept', 'application/json')
+            .expect('Content-Type', /json/)
+            .expect(200)
+            .expect((response) => {
+                expect(response.body.id).to.not.null
+            })
+            .end((err, res) => {
+                if (err)
+                    return done(err)
+                done()
+            })
+    })
+})
