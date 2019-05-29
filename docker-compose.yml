@@ -10,6 +10,14 @@ services:
       - "8080:8080"
     depends_on:
       - api
+  
+  data-sender:    
+    build: 
+      context: ./container-data-sender
+    volumes:
+      - "./data-sender:/app"    
+    depends_on:
+      - mosquitto
 
   api:    
     build: 
@@ -18,4 +26,11 @@ services:
       - "./api:/app"
     ports:
       - "4000:4000"
-         
+    depends_on:
+      - mosquitto
+      
+  mosquitto:
+    image: toke/mosquitto
+    ports:
+      - "1883:1883"
+      - "9001:9001"

@@ -19,7 +19,7 @@ let containers = [
   },
   {
     deliverId: 1,
-    id: 4,
+    id: 3,
     beerType: beerType.IPA,
     beerCount: 50,
     currentTemperature: 5,
@@ -29,14 +29,17 @@ let containers = [
 
 export default {
   getAll: (deliverId) => {
-    return containers;
+    return containers.filter(c => c.deliverId === deliverId);
   },
 
-  getById: (deliverId, containerId) => {
-    return containers[0];
+  getById: (containerId) => {
+    return containers.find(c => c.id === containerId);
   },
+
   updateContainer: (container) => {
-    containers[0] = container
+    const index = containers.findIndex(c => c.id === container.id)
+
+    containers[index] = container
 
     return container
   }

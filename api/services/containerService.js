@@ -1,23 +1,23 @@
 export default class ContainerService {
-    constructor({ containerModel }) {
-        this.containerModel = containerModel
-    }
+  constructor({ containerModel }) {
+    this.containerModel = containerModel
+  }
 
-    getAll(deliverId) {
-        let containers = this.containerModel.getAll()
+  getAll(deliverId) {
+    let containers = this.containerModel.getAll()
 
-        return containers
-    }
+    return containers
+  }
 
-    get(containerId, deliverId) {
-        let container = this.containerModel.getById(deliverId, containerId)
+  get(containerId) {
+    let container = this.containerModel.getById(containerId)
 
-        return container
-    }
+    return container
+  }
 
-    updateContainer(container) {
-        container = this.containerModel.updateContainer(container)
+  updateContainer(container) {
+    container = this.containerModel.updateContainer(container)
 
-        return container
-    }
+    return container
+  }
 }

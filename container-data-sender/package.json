@@ -1,0 +1,19 @@
+{
+    "name": "simple-mqtt-app",
+    "version": "1.0.0",
+    "description": "Simple mqtt app",
+    "main": "app.js",
+    "scripts": {
+        "dev": "nodemon -r esm app.js",
+        "run": "node -r esm app.js"
+    },
+    "dependencies": {
+        "mqtt": "^2.18.8",
+        "save": "^2.4.0",
+        "stringify-object": "^3.3.0"
+    },
+    "devDependencies": {
+        "esm": "^3.2.25",
+        "nodemon": "^1.19.1"
+    }
+}
