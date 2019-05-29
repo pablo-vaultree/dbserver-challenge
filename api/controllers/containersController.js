@@ -3,20 +3,20 @@ import bodyParser from 'body-parser'
 
 const API = ({ containerService, beerTemperatureService }) => ({
   getAll: (req, res) => {
-    res.send(containerService.getAll(req))
+    const deliverId = req.params.deliverId
+
+    res.send(containerService.getAll(deliverId))
   },
 
   getContainer: (req, res) => {
-
-    const containerId = req.param.id
-    const deliverId = req.param.deliverId
+    const deliverId = parseInt(req.params.deliverId)
+    const containerId = parseInt(req.params.id)
 
     res.send(containerService.get(containerId, deliverId))
   },
 
   mesureTemperature: (req, res) => {
-    const containerId = req.param.id
-
+    const containerId = parseInt(req.params.id)
     const container = beerTemperatureService.measureTemperature(containerId, req.param.measureTemperature)
 
     res.send(container)
@@ -28,5 +28,5 @@ export default createController(API)
   .get('/', 'getAll')
   .get('/:id', 'getContainer')
   .put('/:id/temperature', 'mesureTemperature', {
-    before: [bodyParser.json()]
+    before: [bodyParser()]
   })

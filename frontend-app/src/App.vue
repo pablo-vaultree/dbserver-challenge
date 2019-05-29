@@ -13,7 +13,6 @@ export default {
     Dashboard
   },
   mounted () {
-    console.log('foi')
   }
 }
 

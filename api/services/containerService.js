@@ -4,7 +4,7 @@ export default class ContainerService {
   }
 
   getAll(deliverId) {
-    let containers = this.containerModel.getAll()
+    let containers = this.containerModel.getAll(deliverId)
 
     return containers
   }

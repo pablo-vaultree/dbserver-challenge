@@ -29,11 +29,12 @@ let containers = [
 
 export default {
   getAll: (deliverId) => {
-    return containers.filter(c => c.deliverId === deliverId);
+
+    return containers.filter(c => c.deliverId === parseInt(deliverId))
   },
 
   getById: (containerId) => {
-    return containers.find(c => c.id === containerId);
+    return containers.find(c => c.id === containerId)
   },
 
   updateContainer: (container) => {

@@ -21,10 +21,9 @@ export default class NewMeasurementhandler {
     this.mqttClient.subscribe(updateMeasurementTopic, { qos: 0 });
 
     this.mqttClient.on('message', (topic, measurementData) => {
-      const data = JSON.parse(measurementData.toString('utf8'))
+      const data = JSON.parse(measurementData.toString('utf-8'))
 
       const container = this.beerTemperatureService.measureTemperature(data.containerId, data.temperature)
-
       this.ioServer.emit(updateMeasurementTopic, container)
     })
 

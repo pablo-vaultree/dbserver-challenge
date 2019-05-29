@@ -25,8 +25,9 @@ export default class MqttHandler {
     })
   }
 
-  sendMessage(newMeasurment) {
-    console.log(JSON.stringify(newMeasurment))
-    this.mqttClient.publish('update-measurement', JSON.stringify(newMeasurment))
+  sendMessage(newMeasurement) {
+    const stringMeasurementData = JSON.stringify(newMeasurement)
+    console.log(stringMeasurementData)
+    this.mqttClient.publish('update-measurement', stringMeasurementData)
   }
 }

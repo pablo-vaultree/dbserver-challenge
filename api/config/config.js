@@ -1,6 +1,6 @@
 const config = {
   DB: 'mongodb://localhost:27017/todos',
-  MQTT_HOST: 'mqtt://mosquitto:1883',
+  MQTT_HOST: 'mqtt://localhost:1883',
   APP_PORT: 4000
 }
 
