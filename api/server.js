@@ -13,45 +13,45 @@ app.use(cors())
 app.use(logger('combined'))
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({
-    extended: true
+  extended: true
 }))
 
 var port = config.APP_PORT || 4000
 const server = app.listen(port, () => {
-    console.log('server up and running at: ' + port)
+  console.log('server up and running at: ' + port)
 })
 
 const ioServer = io.listen(server)
 
 console.log(ioServer)
 ioServer.on('connection', function (socket) {
-    console.log('connected')
-    socket.emit('aaa')
+  console.log('connected')
+  socket.emit('aaa')
 })
 
 createContainerDI(app, ioServer)
 
 function createContainerDI(app, io) {
 
-    const container = createContainer()
-        .register({
-            config: asValue(config),
-            containerModel: asValue(containerModel),
-            ioServer: asValue(io.sockets)
-        })
+  const container = createContainer()
+    .register({
+      config: asValue(config),
+      containerModel: asValue(containerModel),
+      ioServer: asValue(io.sockets)
+    })
 
-    const opts = {
-        formatName: 'camelCase',
-        cwd: __dirname
-    }
-    container.loadModules(
-        [
-            'services/*.js',
-            'factories/*.js',
-        ],
-        opts
-    )
+  const opts = {
+    formatName: 'camelCase',
+    cwd: __dirname
+  }
+  container.loadModules(
+    [
+      'services/*.js',
+      'factories/*.js',
+    ],
+    opts
+  )
 
-    app.use(scopePerRequest(container))
-    app.use(loadControllers('controllers/*.js', { cwd: __dirname }))
+  app.use(scopePerRequest(container))
+  app.use(loadControllers('controllers/*.js', { cwd: __dirname }))
 }

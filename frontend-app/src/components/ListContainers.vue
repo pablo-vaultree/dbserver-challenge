@@ -49,7 +49,7 @@ export default {
     }
   },
   mounted () {
-    let socket = io(`http://localhost:4000`)
+    let socket = io(`http://127.0.0.1:4000`)
 
     socket.on('update-mesurement', (container) => {
       let index = this.containers.findIndex(i => i.id === container.id)
@@ -58,7 +58,7 @@ export default {
 
     console.log('foi')
     axios
-      .get(`http://localhost:4000/deliveries/1/containers/`, {
+      .get(`http://127.0.0.1:4000/deliveries/1/containers/`, {
         headers: {
           'Content-Type': 'application/json'
         }

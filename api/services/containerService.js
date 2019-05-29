@@ -1,6 +1,3 @@
-// A totally framework-independent piece of application code.
-// Nothing here is remotely associated with HTTP, Express or anything.
-
 export default class ContainerService {
     constructor({ containerModel }) {
         this.containerModel = containerModel

@@ -1,0 +1,19 @@
+version: '3.1'
+
+services:
+  frontend:
+    build: ./frontend-app
+    volumes:
+      - "./frontend:/app"
+    ports:
+      - "8080:8080"
+    depends_on:
+      - api
+
+  api:
+    build: .
+    volumes:
+      - "./api:/app"
+    ports:
+      - "4000:4000"
+         

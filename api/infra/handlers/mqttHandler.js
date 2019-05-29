@@ -8,8 +8,8 @@
 //     this.mqttClient = null;
 //     this.host = config.MQTT_HOST;
 //   }
-  
-//   connect() {    
+
+//   connect() {
 //     this.mqttClient = mqtt.connect(this.host);
 
 //     // Mqtt error calback
