@@ -1,7 +1,7 @@
 import { createController } from 'awilix-express' // or `awilix-router-core`
 import bodyParser from 'body-parser'
 
-const API = ({ containerService, beerTemperatureService }) => ({
+const API = ({ containerService, beerTemperatureService, ioServer }) => ({
     getAll: (req, res) => {
         res.send(containerService.getAll(req))
     },
@@ -23,6 +23,8 @@ const API = ({ containerService, beerTemperatureService }) => ({
         container.temperatureWarning = temperatureWarning
 
         container = containerService.updateContainer(container)
+
+        ioServer.emit('update-mesurement', container)
 
         res.send(container)
     }

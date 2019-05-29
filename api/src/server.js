@@ -2,16 +2,13 @@ import express from 'express'
 import logger from 'morgan'
 import bodyParser from 'body-parser'
 import cors from 'cors'
+import io from 'socket.io'
 import config from './config/config'
 import containerModel from './models/containers'
 import { asClass, createContainer, asValue, asFunction } from 'awilix'
 import { loadControllers, scopePerRequest } from 'awilix-express'
 
 let app = express()
-
-createContainerDI(app)
-
-
 app.use(cors())
 app.use(logger('combined'))
 app.use(bodyParser.json())
@@ -20,17 +17,27 @@ app.use(bodyParser.urlencoded({
 }))
 
 var port = config.APP_PORT || 4000
-app.listen(port)
-// const server = app.listen(port, () => {
-//     console.log('server up and running at: ' + port)
-// })
+const server = app.listen(port, () => {
+    console.log('server up and running at: ' + port)
+})
 
-function createContainerDI(app) {
+const ioServer = io.listen(server)
+
+console.log(ioServer)
+ioServer.on('connection', function (socket) {
+    console.log('connected')
+    socket.emit('aaa')
+})
+
+createContainerDI(app, ioServer)
+
+function createContainerDI(app, io) {
 
     const container = createContainer()
         .register({
             config: asValue(config),
-            containerModel: asValue(containerModel)
+            containerModel: asValue(containerModel),
+            ioServer: asValue(io.sockets)
         })
 
     const opts = {

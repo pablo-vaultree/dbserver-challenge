@@ -11,7 +11,7 @@ let containers = [
     },
     {
         deliverId: 1,
-        id: 1,
+        id: 2,
         beerType: beerType.PILSNER,
         beerCount: 50,
         currentTemperature: 5,
@@ -19,7 +19,7 @@ let containers = [
     },
     {
         deliverId: 1,
-        id: 1,
+        id: 4,
         beerType: beerType.IPA,
         beerCount: 50,
         currentTemperature: 5,

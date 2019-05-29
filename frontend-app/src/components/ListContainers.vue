@@ -39,6 +39,7 @@
 
 <script>
 import axios from 'axios'
+import io from 'socket.io-client'
 
 export default {
   name: 'ListContainers',
@@ -48,6 +49,13 @@ export default {
     }
   },
   mounted () {
+    let socket = io(`http://localhost:4000`)
+
+    socket.on('update-mesurement', (container) => {
+      let index = this.containers.findIndex(i => i.id === container.id)
+      this.$set(this.containers, index, container)
+    })
+
     console.log('foi')
     axios
       .get(`http://localhost:4000/deliveries/1/containers/`, {
