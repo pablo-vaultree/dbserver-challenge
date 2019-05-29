@@ -1,8 +1,9 @@
 version: '3.1'
 
 services:
-  frontend:
-    build: ./frontend-app
+  frontend:    
+    build: 
+      context: ./frontend-app
     volumes:
       - "./frontend:/app"
     ports:
@@ -10,8 +11,9 @@ services:
     depends_on:
       - api
 
-  api:
-    build: .
+  api:    
+    build: 
+      context: ./api
     volumes:
       - "./api:/app"
     ports:
