@@ -1,6 +1,7 @@
 import express from 'express'
-import morgan from 'morgan'
+import logger from 'morgan'
 import bodyParser from 'body-parser'
+import cors from 'cors'
 import config from './config/config'
 import containerModel from './models/containers'
 import { asClass, createContainer, asValue, asFunction } from 'awilix'
@@ -10,16 +11,19 @@ let app = express()
 
 createContainerDI(app)
 
-app.use(morgan('dev'))
+
+app.use(cors())
+app.use(logger('combined'))
 app.use(bodyParser.json())
-app.use(bodyParser.urlencoded({ extended: true }))
+app.use(bodyParser.urlencoded({
+    extended: true
+}))
 
 var port = config.APP_PORT || 4000
-const server = app.listen(port, () => {
-    console.log('server up and running at: ' + port)
-})
-
-export default server
+app.listen(port)
+// const server = app.listen(port, () => {
+//     console.log('server up and running at: ' + port)
+// })
 
 function createContainerDI(app) {
 

@@ -1,14 +1,11 @@
 class BeerTemperatureRangeValidator {
-  
+
   validateTemperatureRange(temperatureMeasurement) {
-    console.log(temperatureMeasurement);
-    let minrange = temperatureMeasurement >= this.minTemperatureRange ;
+    let minrange = temperatureMeasurement >= this.minTemperatureRange;
     let maxrange = temperatureMeasurement <= this.maxTemperatureRange;
 
-    console.log(minrange);
-    console.log(maxrange);
-    return (minrange && maxrange);
-    }  
+    return !(minrange && maxrange);
+  }
 }
 
 class IpaTemperatureRangeValidator extends BeerTemperatureRangeValidator {
@@ -17,7 +14,7 @@ class IpaTemperatureRangeValidator extends BeerTemperatureRangeValidator {
 
     this.minTemperatureRange = 5;
     this.maxTemperatureRange = 6;
-  } 
+  }
 }
 
 class LagerTemperatureRangeValidator extends BeerTemperatureRangeValidator {
@@ -32,37 +29,37 @@ class LagerTemperatureRangeValidator extends BeerTemperatureRangeValidator {
 class WheatBeerTemperatureRangeValidator extends BeerTemperatureRangeValidator {
   constructor() {
     super();
-    
+
     this.minTemperatureRange = 3;
     this.maxTemperatureRange = 5;
-  } 
+  }
 }
 
 class PilsnerTemperatureRangeValidator extends BeerTemperatureRangeValidator {
- constructor() {
+  constructor() {
     super();
-    
+
     this.minTemperatureRange = 4;
     this.maxTemperatureRange = 6;
-  } 
+  }
 }
 
 class PaleAleTemperatureRangeValidator extends BeerTemperatureRangeValidator {
   constructor() {
     super();
-    
+
     this.minTemperatureRange = 4;
     this.maxTemperatureRange = 6;
-  } 
+  }
 }
 
 class StoutTemperatureRangeValidator extends BeerTemperatureRangeValidator {
   constructor() {
     super();
-    
+
     this.minTemperatureRange = 6;
     this.maxTemperatureRange = 8;
-  } 
+  }
 }
 
 export {

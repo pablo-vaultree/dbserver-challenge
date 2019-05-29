@@ -1,20 +1,43 @@
 import beerType from './beers'
 
-const containers = [
-  {
-    deliverId: 1,
-    id: 1,
-    beerType: beerType.IPA,
-    beerCount: 50
-  }
+let containers = [
+    {
+        deliverId: 1,
+        id: 1,
+        beerType: beerType.IPA,
+        beerCount: 50,
+        currentTemperature: 5,
+        temperatureWarning: false
+    },
+    {
+        deliverId: 1,
+        id: 1,
+        beerType: beerType.PILSNER,
+        beerCount: 50,
+        currentTemperature: 5,
+        temperatureWarning: true
+    },
+    {
+        deliverId: 1,
+        id: 1,
+        beerType: beerType.IPA,
+        beerCount: 50,
+        currentTemperature: 5,
+        temperatureWarning: false
+    }
 ];
 
 export default {
-  getAll : (deliverId) => {
-    return containers;
-  },
+    getAll: (deliverId) => {
+        return containers;
+    },
 
-  getById : (deliverId, containerId) => {
-    return containers[0];
-  }
-};
+    getById: (deliverId, containerId) => {
+        return containers[0];
+    },
+    updateContainer: (container) => {
+        containers[0] = container
+
+        return container
+    }
+}
