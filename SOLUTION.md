@@ -68,8 +68,8 @@ Finishing for a more robust way to code and see the app I dockerized the apps wi
 
 ### Further Development
 
-From day one of the project I knew I need to learn many things and develop a fast but clean solution. For that, I needed to reduce the scope of the project: no databases, no create-update-delete actions. Just an API getting hardcoded containers and an app getting a container data also hardcoded. 
+From day one of the project I knew I needed to learn many things and develop a fast but clean solution. For that, I reduced the scope of the project: no databases, no create-update-delete actions. Just an API getting hardcoded containers and an app getting a container data also hardcoded. 
 
-The final solution focuses on the show a little on: Implement a reactive app hitting an API that could expand domain rules with a clean and testable solution.
+The final solution focuses on showing: An implementation of a reactive app hitting an API that could expand domain rules with a clean and testable solution.
 
-So for further development would be to implement management of the brewery container transportation, securing and validating incoming data, authorization for the APP and API, saving data, implement continuous deployment and cloud configuration. Also covering solutions with more testing.
+For further development would be to implement management of the brewery container transportation, securing and validating incoming data, authorization for the APP and API, saving data, implement continuous deployment and cloud configuration. Also covering solutions with more testing.
