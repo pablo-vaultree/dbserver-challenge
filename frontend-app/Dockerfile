@@ -4,13 +4,13 @@ ENV PORT=8080
 
 ENV NODE_ENV=development
 
-RUN npm install -g http-server
-
 WORKDIR /usr/src/app
 
 COPY package*.json /usr/src/app/
 
-RUN npm install
+RUN npm install -g http-server
+
+RUN npm install --quiet
 
 COPY . .
 

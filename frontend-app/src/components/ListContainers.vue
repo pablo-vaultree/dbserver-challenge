@@ -38,8 +38,8 @@
 </template>
 
 <script>
-import axios from 'axios'
 import io from 'socket.io-client'
+import { getAll } from '../apiServices/containers'
 
 export default {
   name: 'ListContainers',
@@ -52,21 +52,15 @@ export default {
     let socket = io(`http://localhost:4000`)
 
     socket.on('update-measurement', (container) => {
-      console.log('ta vindo')
       let index = this.containers.findIndex(i => i.id === container.id)
       this.$set(this.containers, index, container)
     })
 
-    axios
-      .get(`http://localhost:4000/deliveries/1/containers/`, {
-        headers: {
-          'Content-Type': 'application/json'
-        }
-      })
-      .then(res => {
-        console.log(res.data)
-        if (res.data.length > 0) {
-          this.containers = res.data
+    getAll()
+      .then(data => {
+        console.log(data)
+        if (data.length > 0) {
+          this.containers = data
         }
       })
   }

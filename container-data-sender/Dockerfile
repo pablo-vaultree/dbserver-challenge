@@ -8,10 +8,10 @@ WORKDIR /usr/src/app
 
 COPY package*.json /usr/src/app/
 
-RUN npm install
+RUN npm install --quiet
 
 COPY . .
 
 EXPOSE 8080
 
-CMD [ "npm", "run", "run" ]
+# CMD [ "npm", "run", "run" ]

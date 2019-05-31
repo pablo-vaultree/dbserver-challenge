@@ -1,6 +1,10 @@
-const config = {
-    MQTT_HOST: 'mqtt://localhost:1883',
-    POOLLING_TIMER: 10000
-}
+import dotenv from 'dotenv'
 
-export default config;
+dotenv.config()
+
+console.log(process.env.MQTT_HOST)
+
+export default {
+    MQTT_HOST: process.env.MQTT_HOST,
+    POOLLING_TIMER: 1000
+}

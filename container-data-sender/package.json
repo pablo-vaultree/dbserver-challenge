@@ -8,6 +8,7 @@
         "run": "node -r esm app.js"
     },
     "dependencies": {
+        "dotenv": "^8.0.0",
         "mqtt": "^2.18.8",
         "save": "^2.4.0",
         "stringify-object": "^3.3.0"
