@@ -1,4 +1,4 @@
-# PragmaBrewery Delivery 
+# PragmaBrewery Delivery
 
 Control beer transportation with realtime sensor data
 
@@ -8,7 +8,7 @@ Control beer transportation with realtime sensor data
 2. Clone the repository with `git clone --depth=1 https://github.com/pablofeijo/dbserver-challenge`
 3. `cd dbserver-challenge`
 4. `docker-compose up`
-5. Access `http://localhost:8080` and you're seeing real time data!
+5. Hit `http://localhost:8081` and you're seeing real time data!
 
 ## Tech
 
