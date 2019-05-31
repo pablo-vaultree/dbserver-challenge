@@ -1,30 +1,31 @@
 version: '3.1'
 
 services:
-  frontend:    
-    build: 
+  frontend:
+    build:
       context: ./frontend-app
-    command: npm run dev
     volumes:
       - "./frontend-app:/app"
     ports:
-      - "8080:8080"
+      - "8081:8081"
+    environment:
+    - API_ROOT=http://localhost:4000
     depends_on:
       - api
-  
-  data-sender:    
-    build: 
+
+  data-sender:
+    build:
       context: ./container-data-sender
     command: npm run dev
     volumes:
-      - "./container-data-sender:/app"    
+      - "./container-data-sender:/app"
     depends_on:
       - mosquitto
     environment:
-    - MQTT_HOST=http://localhost:4000
+    - MQTT_HOST=http://mosquitto:1883
 
-  api:    
-    build: 
+  api:
+    build:
       context: ./api
     command: npm run dev
     volumes:
@@ -34,8 +35,8 @@ services:
     depends_on:
       - mosquitto
     environment:
-    - MQTT_HOST=http://localhost:4000
-      
+    - MQTT_HOST=http://mosquitto:1883
+
   mosquitto:
     image: toke/mosquitto
     ports:

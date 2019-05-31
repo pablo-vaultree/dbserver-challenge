@@ -1,6 +1,6 @@
 FROM node:9.11.1-alpine
 
-ENV PORT=8080
+ENV PORT=8081
 
 ENV NODE_ENV=development
 
@@ -10,12 +10,12 @@ COPY package*.json /usr/src/app/
 
 RUN npm install -g http-server
 
-RUN npm install --quiet
+RUN npm install --silent
 
 COPY . .
 
 RUN npm run build
 
-EXPOSE 8080
+EXPOSE 8081
 
 CMD [ "http-server", "dist" ]
