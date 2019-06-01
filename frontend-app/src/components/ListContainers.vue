@@ -7,7 +7,12 @@
             <br>
             <h3>Containers List</h3>
             <br>
+            <div class="card-deck">
             <template v-for="container in containers">
+              <ul :key="container.id" >
+                <li>deliver id {{container.deliverId}}</li>
+                <li>beerCount {{container.beerCount}}</li>
+              </ul>
               <div :key="container.id" class="card" style="max-width: 18rem;">
                 <div class="card-header">
                   {{ container.beerType }} beers
@@ -24,6 +29,7 @@
                 </div>
               </div>
             </template>
+            </div>
           </div>
         </div>
       </div>
@@ -49,7 +55,6 @@ export default {
 
     socket.on("update-measurement", container => {
       let index = this.containers.findIndex(i => i.id === container.id);
-      console.log(`container ${index}`)
       this.$set(this.containers, index, container);
     });
 
