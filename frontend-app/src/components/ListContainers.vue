@@ -9,7 +9,7 @@
             <br>
             <div class="card-deck">
             <template v-for="container in containers">
-              <ul :key="container.id" class="d-none d-sm-block d-md-none">
+              <ul :key="container.id" class="d-lg-none">
                   <li>
                     <p :class="container.temperatureWarning && 'text-danger'">
                         {{ container.beerType }} beers | Current Temperature {{container.currentTemperature}}º
@@ -17,7 +17,7 @@
                   </li>
               </ul>
 
-              <div :key="container.id" class="card mb-3 d-sm-none d-md-block" style="max-width: 18rem;">
+              <div :key="container.id" class="card mb-3 d-none d-lg-block" style="max-width: 18rem;">
                 <div class="card-header">
                   {{ container.beerType }} beers
                   <span v-if="container.temperatureWarning" class="badge badge-pill badge-danger float-right">Danger</span>
@@ -59,7 +59,6 @@ export default {
 
     socket.on("update-measurement", container => {
       let index = this.containers.findIndex(i => i.id === container.id);
-      console.log(`container ${index}`)
       this.$set(this.containers, index, container);
     });
 
