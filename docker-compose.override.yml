@@ -1,0 +1,11 @@
+version: '2'
+
+services:
+  data-sender:
+    command: npm run dev
+
+  frontend:
+    command: sh -c "npm run build-dev && http-server dist"
+
+  api:
+    command: npm run dev

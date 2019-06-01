@@ -40,6 +40,7 @@
 <script>
 import io from 'socket.io-client'
 import { getAll } from '../apiServices/containers'
+import config from '../../config/config'
 
 export default {
   name: 'ListContainers',
@@ -49,7 +50,7 @@ export default {
     }
   },
   mounted () {
-    let socket = io(`http://localhost:4000`)
+    let socket = io(config.API_ROOT)
 
     socket.on('update-measurement', (container) => {
       let index = this.containers.findIndex(i => i.id === container.id)

@@ -2,5 +2,5 @@
 
 module.exports = {
   NODE_ENV: '"production"',
-  API_ROOT: '"http://localhost:4000"'
+  API_ROOT: '"http://138.197.66.142:4000"'
 }
