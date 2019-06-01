@@ -7,7 +7,6 @@
             <br>
             <h3>Containers List</h3>
             <br>
-            <div class="card-deck">
             <template v-for="container in containers">
               <div :key="container.id" class="card" style="max-width: 18rem;">
                 <div class="card-header">
@@ -25,7 +24,6 @@
                 </div>
               </div>
             </template>
-            </div>
           </div>
         </div>
       </div>
