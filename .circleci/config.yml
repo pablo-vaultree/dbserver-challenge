@@ -85,7 +85,7 @@ jobs:
       - run:
           name: Deploy Over SSH
           command: |
-            ssh $DROPLET_USER@$DROPLET_IP "cd ~/mywell-dbserver-challengeserver; ./deploy.sh"
+            ssh $DROPLET_USER@$DROPLET_IP "cd ~/dbserver-challenge; ./deploy.sh"
 
 workflows:
   version: 2
