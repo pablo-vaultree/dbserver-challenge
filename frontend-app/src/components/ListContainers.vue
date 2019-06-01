@@ -9,7 +9,15 @@
             <br>
             <div class="card-deck">
             <template v-for="container in containers">
-              <div :key="container.id" class="card mb-3" style="max-width: 18rem;">
+              <ul :key="container.id" class="d-none d-sm-block d-md-none">
+                  <li>
+                    <p :class="container.temperatureWarning && 'text-danger'">
+                        {{ container.beerType }} beers | Current Temperature {{container.currentTemperature}}º
+                    </p>
+                  </li>
+              </ul>
+
+              <div :key="container.id" class="card mb-3 d-sm-none d-md-block" style="max-width: 18rem;">
                 <div class="card-header">
                   {{ container.beerType }} beers
                   <span v-if="container.temperatureWarning" class="badge badge-pill badge-danger float-right">Danger</span>
