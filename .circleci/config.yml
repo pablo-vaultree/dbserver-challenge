@@ -78,6 +78,13 @@ jobs:
           name: Test
           command: npm test
 
+  deployment:
+    master:
+      branch: master
+      commands:
+        - echo 'deploying master branch'
+        - ssh -v $DROPLET_USER@$DROPLET_IP "cd ~/mywell-dbserver-challengeserver; ./deploy.sh"
+
 workflows:
   version: 2
   build_and_test-api:
