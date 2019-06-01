@@ -78,7 +78,9 @@ jobs:
           name: Test
           command: npm test
 
-  deployment:
+  deploy:
+    machine:
+      enabled: true
     steps:
       - run:
           name: Deploy Over SSH
