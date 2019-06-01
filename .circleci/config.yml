@@ -86,9 +86,10 @@ workflows:
       - test-api:
           requires:
             - build-api
+
   build_and_test-frontend:
     jobs:
       - build-frontend
       - test-frontend:
           requires:
-            - build-api
+            - build-frontend
