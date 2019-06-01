@@ -3,14 +3,6 @@ import beerType from './beers'
 let containers = [
   {
     deliverId: 1,
-    id: 1,
-    beerType: beerType.IPA,
-    beerCount: 50,
-    currentTemperature: 5,
-    temperatureWarning: false
-  },
-  {
-    deliverId: 1,
     id: 2,
     beerType: beerType.PILSNER,
     beerCount: 50,
@@ -21,6 +13,38 @@ let containers = [
     deliverId: 1,
     id: 3,
     beerType: beerType.IPA,
+    beerCount: 50,
+    currentTemperature: 5,
+    temperatureWarning: false
+  },
+  {
+    deliverId: 1,
+    id: 4,
+    beerType: beerType.STOUT,
+    beerCount: 50,
+    currentTemperature: 5,
+    temperatureWarning: false
+  },
+  {
+    deliverId: 1,
+    id: 7,
+    beerType: beerType.PALE_ALE,
+    beerCount: 50,
+    currentTemperature: 5,
+    temperatureWarning: false
+  },
+  {
+    deliverId: 1,
+    id: 5,
+    beerType: beerType.LAGER,
+    beerCount: 50,
+    currentTemperature: 5,
+    temperatureWarning: false
+  },
+  {
+    deliverId: 1,
+    id: 6,
+    beerType: beerType.WHEAT_BEER,
     beerCount: 50,
     currentTemperature: 5,
     temperatureWarning: false
