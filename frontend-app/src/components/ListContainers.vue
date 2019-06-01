@@ -11,7 +11,7 @@
             <template v-for="container in containers">
               <div :key="container.id" class="card" style="max-width: 18rem;">
                 <div class="card-header">
-                  Container of {{ container.beerType }}
+                  {{ container.beerType }} beers
                   <span v-if="container.temperatureWarning" class="badge badge-pill badge-danger float-right">Danger</span>
                 </div>
                 <div :class="container.temperatureWarning && 'text-danger'" class="card-body">
