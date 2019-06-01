@@ -58,3 +58,5 @@ function createContainerDI(app, io) {
 
   container.cradle.newMeasurementhandler.listen()
 }
+
+export default server

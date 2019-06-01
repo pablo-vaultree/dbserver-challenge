@@ -4,7 +4,7 @@
   "description": "An api to manage transport of beers",
   "main": "server.js",
   "scripts": {
-    "test": "mocha './specs' --recursive --require esm",
+    "test": "mocha './specs' --recursive --require esm --exit",
     "dev": "nodemon -r esm server.js",
     "run": "node -r esm server.js"
   },

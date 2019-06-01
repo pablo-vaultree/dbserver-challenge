@@ -7,7 +7,7 @@ export default class BeerTemperatureService {
   measureTemperature(containerId, temperatureMeasurement) {
     let container = this.containerService.get(containerId)
 
-    const temperatureWarning = this.validateTemperatureRange(container.beerType, temperatureMeasurement)
+    const temperatureWarning = this.validateTemperatureRangeWarning(container.beerType, temperatureMeasurement)
 
     container.currentTemperature = temperatureMeasurement
     container.temperatureWarning = temperatureWarning
@@ -17,9 +17,9 @@ export default class BeerTemperatureService {
     return container
   }
 
-  validateTemperatureRange(beerType, temperatureMeasurement) {
+  validateTemperatureRangeWarning(beerType, temperatureMeasurement) {
     let validator = this.beerTemperatureRangeValidatorFactory.createTemperatureRangeValidator(beerType)
 
-    return validator.validateTemperatureRange(temperatureMeasurement)
+    return validator.validateTemperatureRangeWarning(temperatureMeasurement)
   }
 }

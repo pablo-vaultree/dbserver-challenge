@@ -1,6 +1,6 @@
 class BeerTemperatureRangeValidator {
 
-  validateTemperatureRange(temperatureMeasurement) {
+  validateTemperatureRangeWarning(temperatureMeasurement) {
     let minrange = temperatureMeasurement >= this.minTemperatureRange;
     let maxrange = temperatureMeasurement <= this.maxTemperatureRange;
 
