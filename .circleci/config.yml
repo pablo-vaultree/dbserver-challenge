@@ -2,7 +2,7 @@ version: 2
 jobs:
   build-api:
     docker:
-      - image: circleci/node:4.8.2-jessie
+      - image: circleci/node:8
 
     working_directory: ~/dbserver-challenge/api
 
@@ -23,7 +23,7 @@ jobs:
 
   build-frontend:
     docker:
-      - image: circleci/node:4.8.2-jessie
+      - image: circleci/node:8
 
     working_directory: ~/dbserver-challenge/frontend-app
     steps:
@@ -43,7 +43,7 @@ jobs:
 
   test-api:
     docker:
-      - image: circleci/node:4.8.2-jessie
+      - image: circleci/node:8
 
     working_directory: ~/dbserver-challenge/api
 
