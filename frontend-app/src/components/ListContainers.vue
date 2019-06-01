@@ -7,13 +7,13 @@
             <br>
             <h3>Containers List</h3>
             <br>
-            <div class="card-deck">
+            <!-- <div class="card-deck"> -->
             <template v-for="container in containers">
               <ul :key="container.id" >
                 <li>deliver id {{container.deliverId}}</li>
                 <li>beerCount {{container.beerCount}}</li>
               </ul>
-              <div :key="container.id" class="card" style="max-width: 18rem;">
+              <!-- <div :key="container.id" class="card" style="max-width: 18rem;">
                 <div class="card-header">
                   {{ container.beerType }} beers
                   <span v-if="container.temperatureWarning" class="badge badge-pill badge-danger float-right">Danger</span>
@@ -27,9 +27,9 @@
                       </ul>
                   </p>
                 </div>
-              </div>
+              </div> -->
             </template>
-            </div>
+            <!-- </div> -->
           </div>
         </div>
       </div>
