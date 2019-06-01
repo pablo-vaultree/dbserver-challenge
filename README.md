@@ -1,6 +1,6 @@
 # PragmaBrewery Delivery
 
-Control beer transportation with realtime sensor data
+Control beer transportation with realtime sensor data [![CircleCI](https://circleci.com/gh/pablofeijo/dbserver-challenge/tree/master.svg?style=svg)](https://circleci.com/gh/pablofeijo/dbserver-challenge/tree/master)
 
 ## Quick start
 
@@ -9,6 +9,17 @@ Control beer transportation with realtime sensor data
 3. `cd dbserver-challenge`
 4. `docker-compose up`
 5. Hit `http://localhost:8081` and you're seeing real time data!
+
+## Deploy ready production
+
+``` bash
+
+# clone it
+git clone --depth=1 https://github.com/pablofeijo/dbserver-challenge
+
+# build and run it with prod env!
+sh deploy.sh
+
 
 ## Tech
 
