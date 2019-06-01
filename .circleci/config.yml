@@ -69,7 +69,7 @@ workflows:
   version: 2
   build_and_test: # name of your workflow
     jobs:
-      - build-api:
+      - build-api
       - test-api:
-        requires:
-           - build-api
+          requires:
+            - build-api
