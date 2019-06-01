@@ -1,17 +1,6 @@
 version: '2'
 
 services:
-  nginx:
-    image: nginx:latest
-    container_name: production_nginx
-    volumes:
-      - ./nginx/nginx.conf:/etc/nginx/nginx.conf
-    ports:
-      - 80:80
-      - 443:443
-    depends_on:
-      - frontend
-
   frontend:
     build:
       context: ./frontend-app
