@@ -7,29 +7,25 @@
             <br>
             <h3>Containers List</h3>
             <br>
-            <table class="table">
-              <thead>
-                <tr>
-                  <th scope="col">Container Id</th>
-                  <th scope="col">Beer Type</th>
-                  <th scope="col">Current Temperature</th>
-                  <th scope="col">Deliver Id</th>
-                  <th scope="col">Beer Count</th>
-                </tr>
-              </thead>
-              <tbody>
-                <template v-for="container in containers">
-                  <tr :key="container.id">
-                    <th scope="row">{{ container.id }}</th>
-                    <td>{{ container.beerType }}</td>
-                    <td v-if="container.temperatureWarning === true" class="alert alert-warning">Warning ({{container.currentTemperature}})</td>
-                    <td v-else>Good ({{container.currentTemperature}})</td>
-                    <td>{{ container.deliverId}}</td>
-                    <td>{{ container.beerCount}}</td>
-                  </tr>
-                </template>
-              </tbody>
-            </table>
+            <div class="card-deck">
+            <template v-for="container in containers">
+              <div :key="container.id" class="card mb-3" style="max-width: 18rem;">
+                <div class="card-header">
+                  Container of {{ container.beerType }}
+                  <span v-if="container.temperatureWarning" class="badge badge-pill badge-danger float-right">Danger</span>
+                </div>
+                <div :class="container.temperatureWarning && 'text-danger'" class="card-body">
+                  <h5 class="card-title">Current Temperature {{container.currentTemperature}}º</h5>
+                  <p class="card-text">
+                      <ul>
+                        <li>deliver id {{container.deliverId}}</li>
+                        <li>beerCount {{container.beerCount}}</li>
+                      </ul>
+                  </p>
+                </div>
+              </div>
+            </template>
+            </div>
           </div>
         </div>
       </div>
@@ -38,32 +34,33 @@
 </template>
 
 <script>
-import io from 'socket.io-client'
-import { getAll } from '../apiServices/containers'
-import config from '../../config/config'
+
+import io from "socket.io-client";
+import { getAll } from "../apiServices/containers";
+import config from "../../config/config";
 
 export default {
-  name: 'ListContainers',
-  data () {
+  name: "ListContainers",
+  data() {
     return {
       containers: []
-    }
+    };
   },
-  mounted () {
-    let socket = io(config.API_ROOT)
+  mounted() {
+    let socket = io(config.API_ROOT);
 
-    socket.on('update-measurement', (container) => {
-      let index = this.containers.findIndex(i => i.id === container.id)
-      this.$set(this.containers, index, container)
-    })
+    socket.on("update-measurement", container => {
+      let index = this.containers.findIndex(i => i.id === container.id);
+      console.log(`container ${index}`)
+      this.$set(this.containers, index, container);
+    });
 
-    getAll()
-      .then(data => {
-        console.log(data)
-        if (data.length > 0) {
-          this.containers = data
-        }
-      })
+    getAll().then(data => {
+      console.log(data);
+      if (data.length > 0) {
+        this.containers = data;
+      }
+    });
   }
-}
+};
 </script>
