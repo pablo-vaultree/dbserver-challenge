@@ -79,11 +79,11 @@ jobs:
           command: npm test
 
   deployment:
-    master:
-      branch: master
-      commands:
-        - echo 'deploying master branch'
-        - ssh -v $DROPLET_USER@$DROPLET_IP "cd ~/mywell-dbserver-challengeserver; ./deploy.sh"
+    steps:
+      - run:
+          name: Deploy Over SSH
+          command: |
+            ssh $DROPLET_USER@$DROPLET_IP "cd ~/mywell-dbserver-challengeserver; ./deploy.sh"
 
 workflows:
   version: 2
@@ -93,6 +93,12 @@ workflows:
       - test-api:
           requires:
             - build-api
+      - deploy:
+          requires:
+            - test-api
+          filters:
+            branches:
+              only: master
 
   # build_and_test-frontend:
   #   jobs:
