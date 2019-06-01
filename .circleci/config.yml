@@ -16,13 +16,13 @@ jobs:
           name: show files
           command: 'ls -a'
       - restore_cache:
-          key: dependency-cache-{{ checksum "api/package.json" }}
+          key: dependency-cachev2-{{ checksum "api/package.json" }}
       - run:
           working_directory: api
           name: Install npm wee
           command: npm install
       - save_cache:
-          key: dependency-cache-{{ checksum "api/package.json" }}
+          key: dependency-cachev2-{{ checksum "api/package.json" }}
           paths:
             - api/node_modules
 
@@ -37,14 +37,14 @@ jobs:
           name: Update npm
           command: 'sudo npm install -g npm@latest'
       - restore_cache:
-          key: dependency-cache-{{ checksum "/frontend-app/package.json" }}
+          key: dependency-cachev2-{{ checksum "/frontend-app/package.json" }}
       - run:
           working_directory: frontend-app
           name: Install npm wee
           command: npm install
       - save_cache:
           working_directory: frontend-app
-          key: dependency-cache-{{ checksum "package.json" }}
+          key: dependency-cachev2-{{ checksum "package.json" }}
           paths:
             - frontend-app/node_modules
 
@@ -57,7 +57,7 @@ jobs:
     steps:
       - checkout
       - restore_cache:
-          key: dependency-cache-{{ checksum "api/package.json" }}
+          key: dependency-cachev2-{{ checksum "api/package.json" }}
       - run:
           working_directory: api
           name: Test
@@ -72,7 +72,7 @@ jobs:
     steps:
       - checkout
       - restore_cache:
-          key: dependency-cache-{{ checksum "frontend-app/package.json" }}
+          key: dependency-cachev2-{{ checksum "frontend-app/package.json" }}
       - run:
           working_directory: frontend-app
           name: Test
