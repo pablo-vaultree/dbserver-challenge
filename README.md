@@ -19,7 +19,7 @@ git clone --depth=1 https://github.com/pablofeijo/dbserver-challenge
 
 # build and run it with prod env!
 sh deploy.sh
-
+```
 
 ## Tech
 
