@@ -16,12 +16,14 @@ jobs:
           name: show files
           command: 'ls -a'
       - restore_cache:
+          working_directory: api
           key: dependency-cache-{{ checksum "package.json" }}
       - run:
           working_directory: api
           name: Install npm wee
           command: npm install
       - save_cache:
+          working_directory: api
           key: dependency-cache-{{ checksum "package.json" }}
           paths:
             - node_modules
@@ -38,12 +40,14 @@ jobs:
           name: Update npm
           command: 'sudo npm install -g npm@latest'
       - restore_cache:
+          working_directory: frontend-app
           key: dependency-cache-{{ checksum "package.json" }}
       - run:
           working_directory: frontend-app
           name: Install npm wee
           command: npm install
       - save_cache:
+          working_directory: frontend-app
           key: dependency-cache-{{ checksum "package.json" }}
           paths:
             - node_modules
