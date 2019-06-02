@@ -4,35 +4,36 @@
       <div class="tab-pane fade show active">
         <div class="row">
           <div class="col-md-12">
-            <br>
-
-            <h3>Containers List</h3>
-            <br>
 
             <ul class="d-lg-none">
               <template v-for="container in containers">
                 <li :key="container.id" >
                   <p :class="container.temperatureWarning && 'text-danger'">
                       {{ container.beerType }} beers <br>
-                      Temperature {{container.currentTemperature}}º
+                      Temperature {{container.currentTemperature}}º<br>
+                      Container {{container.id}}
                   </p>
                 </li>
               </template>
             </ul>
 
-            <div class="d-none d-lg-block">
+            <div class="d-none d-lg-block mt-3">
               <div class="card-deck ">
                 <template v-for="container in containers">
-                  <div :key="container.id" class="card mb-3 text-center" style="min-width: 16rem;max-width: 16rem;">
-                    <div class="card-header">
-                      {{ container.beerType }} Container
-                      <span v-if="container.temperatureWarning" class="badge badge-pill badge-danger float-right">Danger</span>
-                    </div>
+                  <div :key="container.id" class="card mb-3 text-center" style="min-width: 12rem;max-width: 12rem;">
+                    <div class="card-body">
+                      <h5 :class="container.temperatureWarning && 'text-danger'"  class="card-title">
+                        Container {{ container.id }}
+                      </h5>
 
-                    <div :class="container.temperatureWarning && 'text-danger'" class="card-body">
+                      <h6 class="card-subtitle mb-2 text-muted">
+                        {{container.beerType}}
+                      </h6>
+
                       <ul class="list-group list-group-flush">
-                        <li class="list-group-item">Temperature <br>{{container.currentTemperature}}º</li>
-                        <li class="list-group-item">BeerCount <br>{{container.beerCount}}</li>
+                        <li :class="container.temperatureWarning && 'text-danger'" class="list-group-item">
+                          Temperature <i v-if="container.temperatureWarning" class="fas fa-exclamation"></i>
+                          <br>{{container.currentTemperature}}º</li>
                       </ul>
                     </div>
                   </div>
