@@ -13,7 +13,8 @@
               <template v-for="container in containers">
                 <li :key="container.id" >
                   <p :class="container.temperatureWarning && 'text-danger'">
-                      {{ container.beerType }} beers | Temperature {{container.currentTemperature}}º
+                      {{ container.beerType }} beers <br>
+                      Temperature {{container.currentTemperature}}º
                   </p>
                 </li>
               </template>
